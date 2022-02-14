@@ -9,24 +9,44 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import CoreLocation
+
+
+protocol WeatherViewDelegate {
+    func weatherDidUpdate(weather:WeatherModel)
+    func didFailWithError(error: Error)
+}
 
 struct WeatherManager {
-    let API = "https://api.openweathermap.org/data/2.5/weather?appid=fe84bedc4e4f076bb06b1778f19a9e77&units=metric&q="
-    
-    func callAPI (city:String) {
+    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=fe84bedc4e4f076bb06b1778f19a9e77&units=metric"
+       
+       var delegate: WeatherViewDelegate?
+       
+       func fetchWeather(cityName: String) {
+           let urlString = "\(weatherURL)&q=\(cityName)"
+           performRequest(with: urlString)
+       }
+       
+       func fetchWeather(latitude: CLLocationDegrees, longitute: CLLocationDegrees) {
+           let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitute)"
+           performRequest(with: urlString)
+       }
+       
+
+    func performRequest(with url:String) {
 //    create an URL
-        let url = URL(string: API+city)!
+        let url = URL(string: url)!
         print(url)
 //    create a task
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
              if let error = error {
-               print("Error with fetching films: \(error)")
+                 delegate?.didFailWithError(error: error)
                return
              }
              
              guard let httpResponse = response as? HTTPURLResponse,
                    (200...299).contains(httpResponse.statusCode) else {
-               print("Error with the response, unexpected status code: \(response)")
+                       delegate?.didFailWithError(error: error!)
                return
              }
             
@@ -36,10 +56,10 @@ struct WeatherManager {
                    let conditionID = json["weather"][0]["id"].intValue
                    let cityName = json["name"].stringValue
                    let weather = WeatherModel(conditionId: conditionID, cityName: cityName, temperature: temp)
+                    delegate?.weatherDidUpdate(weather: weather)
                 }
 }
 }
-                                              
 )
         task.resume()
     }
