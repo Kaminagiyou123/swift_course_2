@@ -12,15 +12,19 @@ struct ContentView:View {
     @ObservedObject var networkManager = NetworkManager()
 
     var body :some View {
-    
+        
         NavigationView {
             List(networkManager.posts) { post in
-                       VStack(alignment: .leading) {
-                           Text(post.title)
-                          .font(.subheadline)
-                       }
+                
+                NavigationLink(destination: WebView(url:URL(string: post.url))){
+                    VStack(alignment: .leading) {
+                        Text(String(post.points))
+                        Text(post.title)
+                       .font(.subheadline)
+                    }
+                }
                   .navigationBarTitle(Text("Hacker News"))
-    }.onAppear {
+                    }.onAppear {
         self.networkManager.performRequest()
     }
 }
@@ -28,7 +32,7 @@ struct ContentView:View {
 }
 struct ContentView_Previews:PreviewProvider {
    
-   static  var previews :some View {
+   static var previews :some View {
        ContentView()
     }
 }

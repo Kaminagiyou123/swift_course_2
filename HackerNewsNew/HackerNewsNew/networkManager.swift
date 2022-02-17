@@ -44,14 +44,16 @@ class NetworkManager: ObservableObject {
                     for i in 0...json["hits"].count-1
                    
                     {
-                    let url = json["hits"][i].url
+                    let url = json["hits"][i]["url"]
                     let title = json["hits"][i]["title"]
                     let points = json["hits"][i]["points"]
                     let id = json["hits"][i]["objectID"]
-                        
-                        self.posts.append(Post(id: id.stringValue, title: title.stringValue, points: points.intValue, url: url?.absoluteString ?? ""))
+                        DispatchQueue.main.async {
+                            self.posts.append(Post(id: id.stringValue, title: title.stringValue, points: points.intValue, url:url.stringValue))
                    
-                }
+                        }
+                        
+                    }
                 }
 }
 }

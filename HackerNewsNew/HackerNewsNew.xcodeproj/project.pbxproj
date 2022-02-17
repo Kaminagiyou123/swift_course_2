@@ -14,6 +14,7 @@
 		E1A20F5D27BDD62C00BD3D75 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A20F5C27BDD62C00BD3D75 /* Persistence.swift */; };
 		E1A20F6027BDD62C00BD3D75 /* HackerNewsNew.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E1A20F5E27BDD62C00BD3D75 /* HackerNewsNew.xcdatamodeld */; };
 		E1A20F6727BDE29D00BD3D75 /* networkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A20F6627BDE29C00BD3D75 /* networkManager.swift */; };
+		E1A20F6927BF06F800BD3D75 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A20F6827BF06F800BD3D75 /* DetailView.swift */; };
 		F31E5AFB5EAB6CCA53F32E06 /* Pods_HackerNewsNew.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EDDE0A08054A98DC772EE8C /* Pods_HackerNewsNew.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		E1A20F5C27BDD62C00BD3D75 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E1A20F5F27BDD62C00BD3D75 /* HackerNewsNew.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HackerNewsNew.xcdatamodel; sourceTree = "<group>"; };
 		E1A20F6627BDE29C00BD3D75 /* networkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = networkManager.swift; sourceTree = "<group>"; };
+		E1A20F6827BF06F800BD3D75 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			children = (
 				E1A20F5327BDD62700BD3D75 /* HackerNewsNewApp.swift */,
 				E1A20F5527BDD62700BD3D75 /* ContentView.swift */,
+				E1A20F6827BF06F800BD3D75 /* DetailView.swift */,
 				E1A20F6627BDE29C00BD3D75 /* networkManager.swift */,
 				E1A20F5727BDD62C00BD3D75 /* Assets.xcassets */,
 				E1A20F5C27BDD62C00BD3D75 /* Persistence.swift */,
@@ -216,6 +219,7 @@
 			files = (
 				E1A20F5D27BDD62C00BD3D75 /* Persistence.swift in Sources */,
 				E1A20F5627BDD62700BD3D75 /* ContentView.swift in Sources */,
+				E1A20F6927BF06F800BD3D75 /* DetailView.swift in Sources */,
 				E1A20F6727BDE29D00BD3D75 /* networkManager.swift in Sources */,
 				E1A20F5427BDD62700BD3D75 /* HackerNewsNewApp.swift in Sources */,
 				E1A20F6027BDD62C00BD3D75 /* HackerNewsNew.xcdatamodeld in Sources */,
