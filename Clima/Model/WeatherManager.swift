@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftyJSON
+import CoreLocation
 
 
 protocol WeatherViewDelegate {
@@ -23,6 +24,11 @@ struct WeatherManager {
     
     func fetchWeather(_ cityName: String) {
         let urlString = "\(weatherURL)&q=\(cityName)"
+        performRequest(urlString)
+    }
+    
+    func fetchWeather(latitude:CLLocationDegrees,longitude:CLLocationDegrees) {
+        let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
         performRequest(urlString)
     }
     
