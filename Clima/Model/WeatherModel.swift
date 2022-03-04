@@ -2,9 +2,11 @@
 //  WeatherModel.swift
 //  Clima
 //
-//  Created by ran you on 2/28/22.
+//  Created by ran you on 3/4/22.
 //  Copyright © 2022 App Brewery. All rights reserved.
 //
+
+import Foundation
 
 struct WeatherModel {
     let conditionId: Int
@@ -37,3 +39,4 @@ struct WeatherModel {
     }
     
 }
+
