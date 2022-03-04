@@ -9,27 +9,28 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var coinManager = CoinManager()
+    
     @IBOutlet weak var bitcoinLabel: UILabel!
+    
     @IBOutlet weak var currencyLabel: UILabel!
     
     @IBOutlet weak var currencyPicker: UIPickerView!
     
-    var coinManager = CoinManager()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         currencyPicker.dataSource = self
-        currencyPicker.delegate = self
-        coinManager.delegate = self
         
-     
-      
-           }
-
+        currencyPicker.delegate = self
+        
+        coinManager.delegate = self
+    }
+    
+    
 }
 
-extension ViewController:UIPickerViewDataSource{
+extension ViewController: UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -39,30 +40,31 @@ extension ViewController:UIPickerViewDataSource{
     }
 }
 
-extension ViewController : UIPickerViewDelegate {
-    
+extension ViewController:UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return coinManager.currencyArray[row]
     }
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-       
         let currency = coinManager.currencyArray[row]
-        
-        coinManager.getCoinPrice(for: currency)
+        print(currency)
+        coinManager.getPrice(currency)
     }
 }
-
-extension ViewController :coinViewDelegate {
-    func priceDidUpdate(currency: String, rate: Double) {
-        DispatchQueue.main.async {
-            self.bitcoinLabel.text = String(format:"%.2f",rate)
-            self.currencyLabel.text = currency
-        }
-    }
+extension ViewController:coinViewDelegate{
     
     func didFailWithError(error: Error) {
         print(error)
     }
+    
+    func didUpdatePrice(rate: Double, currency: String) {
+        DispatchQueue.main.async
+        {
+            self.bitcoinLabel.text = String (format: "%.1f", rate)
+            self.currencyLabel.text = currency
+        }
+    }
+    
     
     
     

@@ -98,9 +98,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bitcoinLabel" destination="N2a-Ax-iRV" id="Lqt-Xu-9da"/>
-                        <outlet property="currencyLabel" destination="MAn-y0-nXv" id="S7e-n7-FoD"/>
-                        <outlet property="currencyPicker" destination="ct2-jk-pgH" id="gfu-u5-o0p"/>
+                        <outlet property="bitcoinLabel" destination="N2a-Ax-iRV" id="XlA-xn-rDm"/>
+                        <outlet property="currencyLabel" destination="MAn-y0-nXv" id="w7H-PO-Y0I"/>
+                        <outlet property="currencyPicker" destination="ct2-jk-pgH" id="uw3-8M-wmm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
